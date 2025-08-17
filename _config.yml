@@ -3,7 +3,7 @@ title: "Michael Garde's Digital Playground 🎪"
 description: "A wild ride through code, chaos, and creativity"
 author: "Michael Garde"
 email: "michael@mgarde.dk"
-url: "https://michaelgarde.github.io"
+url: "https://mgarde.dk"
 baseurl: ""
 
 # Theme and styling
@@ -33,11 +33,10 @@ defaults:
     values:
       layout: "easter_egg"
 
-# Plugins
+# Plugins (only use GitHub Pages compatible ones)
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-sitemap
 
 # Exclude from processing
 exclude:

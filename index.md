@@ -35,14 +35,7 @@ This isn't your typical developer portfolio. Oh no! This is a **digital carnival
 
 ## 🚀 Latest Adventures
 
-{% raw %}
-{% assign sorted_posts = site.posts | sort: 'date' | reverse %}
-{% for post in sorted_posts limit:3 %}
-### [{{ post.title }}]({{ post.url }})
-*{{ post.date | date: "%B %d, %Y" }}*
-{{ post.excerpt | strip_html | truncatewords: 30 }}
-{% endfor %}
-{% endraw %}
+Check out my latest blog posts and experiments!
 
 ---
 

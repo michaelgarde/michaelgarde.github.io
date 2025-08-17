@@ -1,88 +1,157 @@
 ---
-layout: experiment
+layout: default
 title: "Speed Typing Challenge"
-experiment_number: 002
 date: 2024-01-15
 ---
 
-# 🧪 Speed Typing Challenge
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
 
-Welcome to Experiment #002! This is a wacky typing game where you'll test your keyboard skills against some of the most ridiculous sentences ever written.
+.experiment-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #4ecdc4;
+    box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+}
 
-## 🎯 The Challenge
+.experiment-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    border-radius: 10px;
+    color: white;
+}
 
-Type the displayed text as fast as you can! But beware - these aren't your ordinary typing exercises. We've got some seriously weird sentences that will make you question reality itself.
+.experiment-content {
+    line-height: 1.6;
+}
 
-## 🎮 The Game
+.experiment-footer {
+    margin-top: 30px;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #4ecdc4;
+}
 
-<div style="text-align: center; margin: 2em 0;">
-  <button onclick="startGame()" id="game-button" style="padding: 15px 30px; font-size: 18px; background: linear-gradient(45deg, #667eea, #764ba2); border: none; border-radius: 25px; color: white; cursor: pointer; font-weight: bold;">
-    🚀 Start Typing Challenge
-  </button>
+.back-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #4ecdc4;
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    background: #26d0ce;
+    transform: scale(1.05);
+}
+</style>
+
+<div class="experiment-container">
+    <div class="experiment-header">
+        <h1>🧪 Speed Typing Challenge</h1>
+        <p>Experiment #002</p>
+    </div>
+    
+    <div class="experiment-content">
+        <h2>🧪 Speed Typing Challenge</h2>
+
+        Welcome to Experiment #002! This is a wacky typing game where you'll test your keyboard skills against some of the most ridiculous sentences ever written.
+
+        <h3>🎯 The Challenge</h3>
+
+        Type the displayed text as fast as you can! But beware - these aren't your ordinary typing exercises. We've got some seriously weird sentences that will make you question reality itself.
+
+        <h3>🎮 The Game</h3>
+
+        <div style="text-align: center; margin: 2em 0;">
+          <button onclick="startGame()" id="game-button" style="padding: 15px 30px; font-size: 18px; background: linear-gradient(45deg, #667eea, #764ba2); border: none; border-radius: 25px; color: white; cursor: pointer; font-weight: bold;">
+            🚀 Start Typing Challenge
+          </button>
+        </div>
+
+        <div id="game-container" style="background: #2c3e50; padding: 30px; border-radius: 15px; margin: 2em 0; display: none;">
+          <div style="text-align: center; margin-bottom: 20px;">
+            <h3 style="color: #ecf0f1;">Time: <span id="timer">60</span>s | Score: <span id="score">0</span> | WPM: <span id="wpm">0</span></h3>
+          </div>
+          
+          <div id="target-text" style="background: #34495e; padding: 20px; border-radius: 10px; margin: 20px 0; font-size: 18px; line-height: 1.6; color: #bdc3c7; min-height: 100px;">
+            Click "Start Typing Challenge" to begin!
+          </div>
+          
+          <textarea id="input-field" style="width: 100%; height: 100px; padding: 15px; font-size: 16px; border: 2px solid #3498db; border-radius: 10px; background: #ecf0f1; resize: none;" placeholder="Start typing here..." disabled></textarea>
+          
+          <div style="text-align: center; margin-top: 20px;">
+            <button onclick="resetGame()" style="padding: 10px 20px; background: #e74c3c; border: none; border-radius: 5px; color: white; cursor: pointer;">
+              🔄 Reset Game
+            </button>
+          </div>
+        </div>
+
+        <div id="results" style="background: linear-gradient(45deg, #ff6b6b, #4ecdc4); padding: 30px; border-radius: 15px; margin: 2em 0; display: none; text-align: center; color: white;">
+          <h2>🎉 Game Complete! 🎉</h2>
+          <div id="final-stats" style="font-size: 18px; margin: 20px 0;"></div>
+          <button onclick="startGame()" style="padding: 15px 30px; background: white; color: #333; border: none; border-radius: 25px; cursor: pointer; font-weight: bold;">
+            🎮 Play Again
+          </button>
+        </div>
+
+        <h3>🎪 The Wacky Sentences</h3>
+
+        Our typing challenges feature some of the most bizarre sentences ever conceived:
+
+        - "The quantum cat is simultaneously debugging and being debugged while wearing a tuxedo made of pure mathematics."
+        - "My code is like a box of chocolates - you never know what you're gonna get, but it's probably a null pointer exception."
+        - "The algorithm danced the cha-cha with the data structure while the compiler watched in mild amusement."
+        - "In a parallel universe, this sentence is being typed by a robot who dreams of electric sheep."
+        - "The bug was so elusive that it started leaving breadcrumbs for other bugs to follow."
+
+        <h3>🏆 Scoring System</h3>
+
+        - **Words Per Minute (WPM)**: Calculated based on your typing speed
+        - **Accuracy**: Percentage of correctly typed characters
+        - **Bonus Points**: Extra points for perfect sentences
+        - **Time Bonus**: Faster completion = more points
+
+        <h3>🧠 The Science Behind Typing</h3>
+
+        Typing speed is influenced by:
+        - **Muscle Memory**: Your fingers remember common patterns
+        - **Cognitive Load**: How much you're thinking about the content
+        - **Visual Processing**: How quickly you can read and process text
+        - **Motor Skills**: Your finger coordination and dexterity
+
+        <h3>🎯 Tips for Success</h3>
+
+        1. **Don't look at your keyboard** - Trust your muscle memory
+        2. **Focus on accuracy first** - Speed will come naturally
+        3. **Take deep breaths** - Stay relaxed and focused
+        4. **Practice regularly** - Consistency is key
+        5. **Have fun** - It's just a game, after all!
+
+        <hr>
+
+        <p><em>"The quick brown fox jumps over the lazy dog, but the lazy dog is actually a quantum superposition of all possible dogs." - Schrödinger's Typing Manual</em></p>
+    </div>
+    
+    <div class="experiment-footer">
+        <a href="/" class="back-link">🏠 Back to the Playground</a>
+    </div>
 </div>
-
-<div id="game-container" style="background: #2c3e50; padding: 30px; border-radius: 15px; margin: 2em 0; display: none;">
-  <div style="text-align: center; margin-bottom: 20px;">
-    <h3 style="color: #ecf0f1;">Time: <span id="timer">60</span>s | Score: <span id="score">0</span> | WPM: <span id="wpm">0</span></h3>
-  </div>
-  
-  <div id="target-text" style="background: #34495e; padding: 20px; border-radius: 10px; margin: 20px 0; font-size: 18px; line-height: 1.6; color: #bdc3c7; min-height: 100px;">
-    Click "Start Typing Challenge" to begin!
-  </div>
-  
-  <textarea id="input-field" style="width: 100%; height: 100px; padding: 15px; font-size: 16px; border: 2px solid #3498db; border-radius: 10px; background: #ecf0f1; resize: none;" placeholder="Start typing here..." disabled></textarea>
-  
-  <div style="text-align: center; margin-top: 20px;">
-    <button onclick="resetGame()" style="padding: 10px 20px; background: #e74c3c; border: none; border-radius: 5px; color: white; cursor: pointer;">
-      🔄 Reset Game
-    </button>
-  </div>
-</div>
-
-<div id="results" style="background: linear-gradient(45deg, #ff6b6b, #4ecdc4); padding: 30px; border-radius: 15px; margin: 2em 0; display: none; text-align: center; color: white;">
-  <h2>🎉 Game Complete! 🎉</h2>
-  <div id="final-stats" style="font-size: 18px; margin: 20px 0;"></div>
-  <button onclick="startGame()" style="padding: 15px 30px; background: white; color: #333; border: none; border-radius: 25px; cursor: pointer; font-weight: bold;">
-    🎮 Play Again
-  </button>
-</div>
-
-## 🎪 The Wacky Sentences
-
-Our typing challenges feature some of the most bizarre sentences ever conceived:
-
-- "The quantum cat is simultaneously debugging and being debugged while wearing a tuxedo made of pure mathematics."
-- "My code is like a box of chocolates - you never know what you're gonna get, but it's probably a null pointer exception."
-- "The algorithm danced the cha-cha with the data structure while the compiler watched in mild amusement."
-- "In a parallel universe, this sentence is being typed by a robot who dreams of electric sheep."
-- "The bug was so elusive that it started leaving breadcrumbs for other bugs to follow."
-
-## 🏆 Scoring System
-
-- **Words Per Minute (WPM)**: Calculated based on your typing speed
-- **Accuracy**: Percentage of correctly typed characters
-- **Bonus Points**: Extra points for perfect sentences
-- **Time Bonus**: Faster completion = more points
-
-## 🧠 The Science Behind Typing
-
-Typing speed is influenced by:
-- **Muscle Memory**: Your fingers remember common patterns
-- **Cognitive Load**: How much you're thinking about the content
-- **Visual Processing**: How quickly you can read and process text
-- **Motor Skills**: Your finger coordination and dexterity
-
-## 🎯 Tips for Success
-
-1. **Don't look at your keyboard** - Trust your muscle memory
-2. **Focus on accuracy first** - Speed will come naturally
-3. **Take deep breaths** - Stay relaxed and focused
-4. **Practice regularly** - Consistency is key
-5. **Have fun** - It's just a game, after all!
-
----
-
-*"The quick brown fox jumps over the lazy dog, but the lazy dog is actually a quantum superposition of all possible dogs." - Schrödinger's Typing Manual*
 
 <script>
 let gameActive = false;
