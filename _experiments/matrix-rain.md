@@ -1,46 +1,134 @@
 ---
-layout: experiment
+layout: default
 title: "Matrix Rain Generator"
-experiment_number: 001
 date: 2024-01-15
 ---
 
-# 🧪 Matrix Rain Generator
+<style>
+body {
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(45deg, #1a1a1a, #2d2d2d);
+    color: #00ff00;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
 
-Welcome to Experiment #001! This is where we explore the fascinating world of digital rain effects, inspired by the iconic Matrix movies.
+.experiment-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+}
 
-## 🎯 The Experiment
+.experiment-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    border-radius: 10px;
+    color: white;
+}
 
-This page demonstrates a Matrix-style rain effect using pure JavaScript and CSS. The characters fall from the top of the screen, creating that classic "digital rain" aesthetic that we all know and love.
+.experiment-content {
+    line-height: 1.6;
+}
 
-## 🔬 How It Works
+.experiment-footer {
+    margin-top: 30px;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #00ff00;
+}
 
-The effect is created by:
-1. **Character Generation**: Random characters (including Japanese katakana) are generated
-2. **Animation**: CSS animations make them fall from top to bottom
-3. **Randomization**: Each character has random positioning and timing
-4. **Cleanup**: Characters are removed after animation completes
+.back-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #00ff00;
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
 
-## 🎮 Interactive Demo
+.back-link:hover {
+    background: #00cc00;
+    transform: scale(1.05);
+}
 
-<div style="text-align: center; margin: 2em 0;">
-  <button onclick="toggleMatrix()" id="matrix-toggle" style="padding: 15px 30px; font-size: 18px; background: linear-gradient(45deg, #00ff00, #00cc00); border: none; border-radius: 25px; color: black; cursor: pointer; font-weight: bold;">
-    🎬 Start Matrix Rain
-  </button>
-</div>
+/* Matrix rain effect */
+.matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.1;
+}
 
-<div id="matrix-demo" style="position: relative; height: 300px; background: #000; border: 2px solid #00ff00; border-radius: 10px; overflow: hidden; margin: 2em 0;">
-  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #00ff00; font-size: 18px; z-index: 10;">
-    Click the button above to start the Matrix rain effect!
-  </div>
-</div>
+.matrix-char {
+    position: absolute;
+    color: #00ff00;
+    font-size: 14px;
+    animation: matrix-fall 3s linear infinite;
+}
 
-## 💻 The Code
+@keyframes matrix-fall {
+    0% { transform: translateY(-100vh); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+</style>
 
-Here's the core JavaScript that powers this effect:
+<div class="matrix-bg" id="matrix-bg"></div>
 
-```javascript
-function createMatrixRain() {
+<div class="experiment-container">
+    <div class="experiment-header">
+        <h1>🧪 Matrix Rain Generator</h1>
+        <p>Experiment #001</p>
+    </div>
+    
+    <div class="experiment-content">
+        <h2>🧪 Matrix Rain Generator</h2>
+
+        Welcome to Experiment #001! This is where we explore the fascinating world of digital rain effects, inspired by the iconic Matrix movies.
+
+        <h3>🎯 The Experiment</h3>
+
+        This page demonstrates a Matrix-style rain effect using pure JavaScript and CSS. The characters fall from the top of the screen, creating that classic "digital rain" aesthetic that we all know and love.
+
+        <h3>🔬 How It Works</h3>
+
+        The effect is created by:
+        1. **Character Generation**: Random characters (including Japanese katakana) are generated
+        2. **Animation**: CSS animations make them fall from top to bottom
+        3. **Randomization**: Each character has random positioning and timing
+        4. **Cleanup**: Characters are removed after animation completes
+
+        <h3>🎮 Interactive Demo</h3>
+
+        <div style="text-align: center; margin: 2em 0;">
+          <button onclick="toggleMatrix()" id="matrix-toggle" style="padding: 15px 30px; font-size: 18px; background: linear-gradient(45deg, #00ff00, #00cc00); border: none; border-radius: 25px; color: black; cursor: pointer; font-weight: bold;">
+            🎬 Start Matrix Rain
+          </button>
+        </div>
+
+        <div id="matrix-demo" style="position: relative; height: 300px; background: #000; border: 2px solid #00ff00; border-radius: 10px; overflow: hidden; margin: 2em 0;">
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #00ff00; font-size: 18px; z-index: 10;">
+            Click the button above to start the Matrix rain effect!
+          </div>
+        </div>
+
+        <h3>💻 The Code</h3>
+
+        Here's the core JavaScript that powers this effect:
+
+        <pre><code>function createMatrixRain() {
   const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
   
   setInterval(() => {
@@ -53,37 +141,42 @@ function createMatrixRain() {
     
     setTimeout(() => char.remove(), 4000);
   }, 100);
-}
-```
+}</code></pre>
 
-## 🎨 Customization Options
+        <h3>🎨 Customization Options</h3>
 
-You can customize the Matrix rain by:
-- **Changing characters**: Modify the character set
-- **Adjusting speed**: Change the interval timing
-- **Color variations**: Use different green shades
-- **Size effects**: Vary character sizes
+        You can customize the Matrix rain by:
+        - **Changing characters**: Modify the character set
+        - **Adjusting speed**: Change the interval timing
+        - **Color variations**: Use different green shades
+        - **Size effects**: Vary character sizes
 
-## 🧠 The Science Behind It
+        <h3>🧠 The Science Behind It</h3>
 
-This effect demonstrates several programming concepts:
-- **DOM manipulation**: Creating and removing elements dynamically
-- **CSS animations**: Using keyframes for smooth movement
-- **Randomization**: Generating random values for variety
-- **Memory management**: Cleaning up elements to prevent memory leaks
+        This effect demonstrates several programming concepts:
+        - **DOM manipulation**: Creating and removing elements dynamically
+        - **CSS animations**: Using keyframes for smooth movement
+        - **Randomization**: Generating random values for variety
+        - **Memory management**: Cleaning up elements to prevent memory leaks
 
-## 🎪 What's Next?
+        <h3>🎪 What's Next?</h3>
 
-Future experiments might include:
-- 3D Matrix effects
-- Interactive character trails
-- Sound effects
-- Color cycling effects
-- Particle systems
+        Future experiments might include:
+        - 3D Matrix effects
+        - Interactive character trails
+        - Sound effects
+        - Color cycling effects
+        - Particle systems
 
----
+        <hr>
 
-*This experiment was created with pure chaos and a love for all things digital. Remember: "There is no spoon." 🥄*
+        <p><em>This experiment was created with pure chaos and a love for all things digital. Remember: "There is no spoon." 🥄</em></p>
+    </div>
+    
+    <div class="experiment-footer">
+        <a href="/" class="back-link">🏠 Back to the Playground</a>
+    </div>
+</div>
 
 <script>
 let matrixActive = false;
@@ -134,6 +227,25 @@ function toggleMatrix() {
   }
 }
 
+// Matrix rain effect for background
+function createMatrixRain() {
+  const matrixBg = document.getElementById('matrix-bg');
+  const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+  
+  setInterval(() => {
+    const char = document.createElement('div');
+    char.className = 'matrix-char';
+    char.textContent = chars[Math.floor(Math.random() * chars.length)];
+    char.style.left = Math.random() * 100 + 'vw';
+    char.style.animationDuration = (Math.random() * 2 + 2) + 's';
+    matrixBg.appendChild(char);
+    
+    setTimeout(() => {
+      char.remove();
+    }, 4000);
+  }, 100);
+}
+
 // Add CSS for matrix animation
 const style = document.createElement('style');
 style.textContent = `
@@ -145,4 +257,7 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+// Initialize
+createMatrixRain();
 </script>
