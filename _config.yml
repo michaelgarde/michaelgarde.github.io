@@ -1,2 +1,62 @@
+# Wacky Jekyll Configuration
+title: "Michael Garde's Digital Playground 🎪"
+description: "A wild ride through code, chaos, and creativity"
+author: "Michael Garde"
+email: "michael@mgarde.dk"
+url: "https://michaelgarde.github.io"
+baseurl: ""
+
+# Theme and styling
 theme: jekyll-theme-tactile
-title: mgarde
+markdown: kramdown
+highlighter: rouge
+
+# Collections for wacky content
+collections:
+  experiments:
+    output: true
+    permalink: /experiments/:name/
+  easter_eggs:
+    output: true
+    permalink: /easter-eggs/:name/
+
+# Defaults for different content types
+defaults:
+  - scope:
+      path: ""
+      type: "experiments"
+    values:
+      layout: "experiment"
+  - scope:
+      path: ""
+      type: "easter_eggs"
+    values:
+      layout: "easter_egg"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# Social media links (for the wacky footer)
+social:
+  github: michaelgarde
+  twitter: mgarde
+  linkedin: michaelgarde
+
+# Fun facts about the site
+fun_facts:
+  - "This site was built with pure chaos and Jekyll"
+  - "Contains exactly 42 easter eggs"
+  - "Powered by prompts and Cursor"
